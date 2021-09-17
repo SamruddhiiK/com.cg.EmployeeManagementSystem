@@ -1,5 +1,6 @@
 package com.cg.EmployeeManagementSystem.model;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="employee_details")
+=======
+/*
+ * ...
+ */
+>>>>>>> 67cde267ae09a851766d0b505fb390beab9e1e84
 public class Employee {
   
 	@Id
