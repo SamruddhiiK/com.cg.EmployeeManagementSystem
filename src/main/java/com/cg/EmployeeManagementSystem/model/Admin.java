@@ -19,6 +19,6 @@ public class Admin {
 	 @Column(name="admin_name")
       private String adminName;
 	 
-	 @Column(name="admin_name")
+	 @Column(name="admin_password")
       private String adminPassword;
 }
