@@ -1,6 +1,5 @@
 package com.cg.EmployeeManagementSystem.model;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
