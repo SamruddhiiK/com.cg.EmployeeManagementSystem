@@ -36,16 +36,16 @@ public class Payroll {
 	@Column(name="salary")
 	private double salary;
 	
-	@OneToOne
-    @JoinColumn(name = "leave_id", nullable = false)
-	LeaveDetails leave_details;
+
 
 	public Payroll() {
 		super();
 	}
 
+
+
 	public Payroll(int payrollId, String bankName, String bankAccountNo, int noOfWorkingDays, String month, int year,
-			double salary, LeaveDetails leave_details) {
+			double salary) {
 		super();
 		this.payrollId = payrollId;
 		this.bankName = bankName;
@@ -54,79 +54,100 @@ public class Payroll {
 		this.month = month;
 		this.year = year;
 		this.salary = salary;
-		this.leave_details = leave_details;
 	}
+
+
 
 	public int getPayrollId() {
 		return payrollId;
 	}
 
+
+
 	public void setPayrollId(int payrollId) {
 		this.payrollId = payrollId;
 	}
+
+
 
 	public String getBankName() {
 		return bankName;
 	}
 
+
+
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
+
+
 
 	public String getBankAccountNo() {
 		return bankAccountNo;
 	}
 
+
+
 	public void setBankAccountNo(String bankAccountNo) {
 		this.bankAccountNo = bankAccountNo;
 	}
+
+
 
 	public int getNoOfWorkingDays() {
 		return noOfWorkingDays;
 	}
 
+
+
 	public void setNoOfWorkingDays(int noOfWorkingDays) {
 		this.noOfWorkingDays = noOfWorkingDays;
 	}
+
+
 
 	public String getMonth() {
 		return month;
 	}
 
+
+
 	public void setMonth(String month) {
 		this.month = month;
 	}
+
+
 
 	public int getYear() {
 		return year;
 	}
 
+
+
 	public void setYear(int year) {
 		this.year = year;
 	}
+
+
 
 	public double getSalary() {
 		return salary;
 	}
 
+
+
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
-	public LeaveDetails getLeave_details() {
-		return leave_details;
-	}
 
-	public void setLeave_details(LeaveDetails leave_details) {
-		this.leave_details = leave_details;
-	}
 
 	@Override
 	public String toString() {
 		return "Payroll [payrollId=" + payrollId + ", bankName=" + bankName + ", bankAccountNo=" + bankAccountNo
 				+ ", noOfWorkingDays=" + noOfWorkingDays + ", month=" + month + ", year=" + year + ", salary=" + salary
-				+ ", leave_details=" + leave_details + "]";
+				+ "]";
 	}
-	
+     
 	
 }
