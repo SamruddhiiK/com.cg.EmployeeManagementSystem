@@ -18,12 +18,6 @@ public class Payroll {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
 	
-	@Column(name="employee_bankName")
-	private String bankName;
-	
-	@Column(name="employee_bankAccountNo")
-	private String bankAccountNo;
-	
 	@Column(name="employee_noOfWorkingDays")
 	private int noOfWorkingDays;
 	
@@ -44,12 +38,18 @@ public class Payroll {
 
 
 
+	public Payroll(int payrollId, double salary) {
+		super();
+		this.payrollId = payrollId;
+		this.salary = salary;
+	}
+
+
+
 	public Payroll(int payrollId, String bankName, String bankAccountNo, int noOfWorkingDays, String month, int year,
 			double salary) {
 		super();
 		this.payrollId = payrollId;
-		this.bankName = bankName;
-		this.bankAccountNo = bankAccountNo;
 		this.noOfWorkingDays = noOfWorkingDays;
 		this.month = month;
 		this.year = year;
@@ -67,32 +67,6 @@ public class Payroll {
 	public void setPayrollId(int payrollId) {
 		this.payrollId = payrollId;
 	}
-
-
-
-	public String getBankName() {
-		return bankName;
-	}
-
-
-
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
-
-
-
-	public String getBankAccountNo() {
-		return bankAccountNo;
-	}
-
-
-
-	public void setBankAccountNo(String bankAccountNo) {
-		this.bankAccountNo = bankAccountNo;
-	}
-
-
 
 	public int getNoOfWorkingDays() {
 		return noOfWorkingDays;
@@ -144,9 +118,8 @@ public class Payroll {
 
 	@Override
 	public String toString() {
-		return "Payroll [payrollId=" + payrollId + ", bankName=" + bankName + ", bankAccountNo=" + bankAccountNo
-				+ ", noOfWorkingDays=" + noOfWorkingDays + ", month=" + month + ", year=" + year + ", salary=" + salary
-				+ "]";
+		return "Payroll [payrollId=" + payrollId + ", noOfWorkingDays=" + noOfWorkingDays + ", month=" + month
+				+ ", year=" + year + ", salary=" + salary + "]";
 	}
      
 	
