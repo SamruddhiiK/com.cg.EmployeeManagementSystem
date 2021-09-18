@@ -1,5 +1,7 @@
 package com.cg.EmployeeManagementSystem.service;
 
-public interface EmployeeService {
+import com.cg.EmployeeManagementSystem.model.Payroll;
 
+public interface EmployeeService {
+  public Payroll getSalaryDetails(int id);
 }
