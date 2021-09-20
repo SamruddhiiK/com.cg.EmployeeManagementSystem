@@ -8,6 +8,6 @@ import com.cg.EmployeeManagementSystem.model.Payroll;
 
 @Repository
 public interface PayrollRepository extends JpaRepository<Payroll, Integer>{
-	
+
 	
 }

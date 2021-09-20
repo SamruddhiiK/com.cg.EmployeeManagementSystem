@@ -5,6 +5,7 @@ package com.cg.EmployeeManagementSystem.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Employee {
 	@Column(name="employee_password")
 	private String employeePassword;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name="payroll_id")
 	private List<Payroll> payroll; 
 

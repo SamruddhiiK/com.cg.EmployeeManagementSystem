@@ -1,5 +1,6 @@
 package com.cg.EmployeeManagementSystem.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ public class Payroll {
    
 	@Id
 	@Column(name="payroll_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
 	
 	@Column(name="employee_noOfWorkingDays")
@@ -30,7 +32,7 @@ public class Payroll {
 	@Column(name="salary")
 	private double salary;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="employee_id")
 	Employee employee;
 	
