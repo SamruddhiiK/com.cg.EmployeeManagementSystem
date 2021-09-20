@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.cg.EmployeeManagementSystem.model.CompanyInformation;
+import com.cg.EmployeeManagementSystem.model.Employee;
 import com.cg.EmployeeManagementSystem.model.Payroll;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.repository.CompanyInformationRepository;
+import com.cg.EmployeeManagementSystem.repository.EmployeeRepository;
 import com.cg.EmployeeManagementSystem.repository.PayrollRepository;
 import com.cg.EmployeeManagementSystem.repository.YearlyHolidayRepository;
 
@@ -26,10 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired(required = false)
 	CompanyInformationRepository companyInformationRepository;
 
+	@Autowired(required = false)
+	EmployeeRepository employeeRepository;
 
 	@Override
-	public Payroll getSalaryDetails(int id) {
-		Optional<Payroll> result = payrollRepository.findById(id);
+	public Payroll getSalaryDetails(int payrollId) {
+		Optional<Payroll> result = payrollRepository.findById(payrollId);
 		return result.get();
 		
 	}
@@ -45,5 +50,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 		List<CompanyInformation> result = companyInformationRepository.findAll();
 		return result;
 	}
+
+	
+	
 
 }

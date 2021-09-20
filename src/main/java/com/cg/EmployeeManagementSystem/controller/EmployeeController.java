@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.CompanyInformation;
+import com.cg.EmployeeManagementSystem.model.Employee;
 import com.cg.EmployeeManagementSystem.model.Payroll;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.service.EmployeeService;
@@ -37,10 +38,9 @@ public class EmployeeController {
      @GetMapping("/getSalaryDetails/{payrollId}")
      public ResponseEntity<Payroll> getSalaryDetails(@PathVariable int payrollId){
        Payroll payroll = employeeService.getSalaryDetails(payrollId);
-       ResponseEntity<Payroll> response = new ResponseEntity<>(payroll, HttpStatus.OK);
+       ResponseEntity<Payroll> response = new ResponseEntity<Payroll>(payroll, HttpStatus.OK);
 		return response;
-    	 
-    	 
      }
+     
      
 }

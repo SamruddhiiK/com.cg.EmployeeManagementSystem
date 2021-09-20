@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,6 +29,10 @@ public class Payroll {
 	
 	@Column(name="salary")
 	private double salary;
+	
+	@ManyToOne
+	@JoinColumn(name="employee_id")
+	Employee employee;
 	
 
 
@@ -53,6 +58,18 @@ public class Payroll {
 		this.month = month;
 		this.year = year;
 		this.salary = salary;
+	}
+
+
+
+	public Payroll(int payrollId, int noOfWorkingDays, String month, int year, double salary, Employee employee) {
+		super();
+		this.payrollId = payrollId;
+		this.noOfWorkingDays = noOfWorkingDays;
+		this.month = month;
+		this.year = year;
+		this.salary = salary;
+		this.employee = employee;
 	}
 
 
@@ -115,10 +132,22 @@ public class Payroll {
 
 
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Payroll [payrollId=" + payrollId + ", noOfWorkingDays=" + noOfWorkingDays + ", month=" + month
-				+ ", year=" + year + ", salary=" + salary + "]";
+				+ ", year=" + year + ", salary=" + salary + ", employee=" + employee + "]";
 	}
      
 	

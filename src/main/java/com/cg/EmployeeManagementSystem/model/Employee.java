@@ -3,11 +3,15 @@ package com.cg.EmployeeManagementSystem.model;
 
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,18 +29,17 @@ public class Employee {
 	@Column(name="employee_password")
 	private String employeePassword;
 	
+	@OneToMany
+	@JoinColumn(name="payroll_id")
+	private List<Payroll> payroll; 
+
+	
+
 
 	public Employee() {
 		super();
 	}
 
-    
-
-	public Employee(int employeeId, String employeePassword) {
-		super();
-		this.employeeId = employeeId;
-		this.employeePassword = employeePassword;
-	}
 
 
 
@@ -47,11 +50,42 @@ public class Employee {
 		this.employeePassword = employeePassword;
 	}
 
-   
+
+
+
+	public Employee(int employeeId, String employeePassword) {
+		super();
+		this.employeeId = employeeId;
+		this.employeePassword = employeePassword;
+	}
+
+
+
+
+	public Employee(int employeeId, List<Payroll> payroll) {
+		super();
+		this.employeeId = employeeId;
+		this.payroll = payroll;
+	}
+
+
+
+
+	public Employee(int employeeId, String employeeName, String employeePassword, List<Payroll> payroll) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeePassword = employeePassword;
+		this.payroll = payroll;
+	}
+
+
+
 
 	public int getEmployeeId() {
 		return employeeId;
 	}
+
 
 
 
@@ -61,9 +95,11 @@ public class Employee {
 
 
 
+
 	public String getEmployeeName() {
 		return employeeName;
 	}
+
 
 
 
@@ -73,9 +109,11 @@ public class Employee {
 
 
 
+
 	public String getEmployeePassword() {
 		return employeePassword;
 	}
+
 
 
 
@@ -85,15 +123,28 @@ public class Employee {
 
 
 
+
+	public List<Payroll> getPayroll() {
+		return payroll;
+	}
+
+
+
+
+	public void setPayroll(List<Payroll> payroll) {
+		this.payroll = payroll;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeePassword="
-				+ employeePassword + "]";
+				+ employeePassword + ", payroll=" + payroll + "]";
 	}
 
-    
-
-
+   
 	
 	
 	

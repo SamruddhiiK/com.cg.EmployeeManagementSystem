@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-
+import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
+import com.cg.EmployeeManagementSystem.model.Payroll;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.repository.AdminRepository;
 import com.cg.EmployeeManagementSystem.repository.EmployeeRepository;
+import com.cg.EmployeeManagementSystem.repository.PayrollRepository;
 
 
 @Service("adminService")
@@ -24,8 +26,11 @@ public class AdminServiceImpl implements AdminService {
     @Autowired(required = false)
     EmployeeRepository employeeRepository;
     
+    @Autowired(required = false)
+    PayrollRepository payrollRepository;
+    
 	@Override
-	public Admin loginAdmin(int adminId, String password) {
+	public Admin loginAdmin(int adminId, String password) throws IncorrectLoginCredentialsException{
 		
 		 Admin admin =null;
 
@@ -33,10 +38,10 @@ public class AdminServiceImpl implements AdminService {
 				&& adminRepository.findById(adminId).get().getAdminPassword().equals(password)) {
 		     admin = adminRepository.findById(adminId).get();
 			//Logger.info("Admin login is  successfull");
-			
+		 	return admin;
 		}
-		return admin;
-		
+	
+		throw new IncorrectLoginCredentialsException("Invalid Credentials");
 	}
 	 
 	
@@ -49,7 +54,7 @@ public class AdminServiceImpl implements AdminService {
 
 
 	@Override
-	public Employee updateEmploye(Employee employee) {
+	public Employee updateEmployee(Employee employee) {
 		
 			  //LOG.info("Update");
 			  return employeeRepository.save(employee);
@@ -111,6 +116,12 @@ public class AdminServiceImpl implements AdminService {
 	public Employee getEmployeeById(int eid) {
 		Optional<Employee> optEmp = employeeRepository.findById(eid);
 		return optEmp.get();
+	}
+
+
+	@Override
+	public Payroll updateSalary(Payroll payroll) {
+		return payrollRepository.save(payroll);
 	}
 	
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
 import com.cg.EmployeeManagementSystem.model.Payroll;
@@ -33,7 +34,7 @@ public class AdminController {
     PayrollService payrollService;
      
 	@PostMapping(path = "/AdminLogin")
-	public ResponseEntity<Admin> adminLogin(@RequestBody Admin admin){
+	public ResponseEntity<Admin> adminLogin(@RequestBody Admin admin) throws IncorrectLoginCredentialsException{
 			
 		Admin result = adminService.loginAdmin(admin.getAdminId(), admin.getAdminPassword());
 		ResponseEntity<Admin> response = new ResponseEntity<>(result, HttpStatus.OK);
@@ -64,17 +65,10 @@ public class AdminController {
 	
 	@PutMapping("/updateEmployee")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
-		Employee e =adminService.updateEmploye(employee);
+		Employee e =adminService.updateEmployee(employee);
 		return new ResponseEntity<Employee>(e,HttpStatus.OK);
 	}
     
-	@PutMapping("/updateSalary")
-	public ResponseEntity<Payroll> updateSalary(@RequestBody Payroll payroll){
-		Payroll result = payrollService.updateSalary(payroll);
-		ResponseEntity<Payroll> response = new ResponseEntity<>(result, HttpStatus.OK);
-		return response;
-	}
-	
 	@PostMapping("/addAdmin")
 	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) {
 		Admin result = adminService.addAdmin(admin);
@@ -102,6 +96,13 @@ public class AdminController {
 		   Employee emp = adminService.getEmployeeById(eid);
 		   return new ResponseEntity<Employee>(emp,HttpStatus.OK);
 	   }
+	 
+	 @PutMapping("/updateSalary")
+		public ResponseEntity<Payroll> updateSalary(@RequestBody Payroll payroll){
+			Payroll result = payrollService.updateSalary(payroll);
+			ResponseEntity<Payroll> response = new ResponseEntity<>(result, HttpStatus.OK);
+			return response;
+		}
 	
 	
 }
