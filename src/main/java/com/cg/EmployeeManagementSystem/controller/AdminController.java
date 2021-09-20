@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
+import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
 import com.cg.EmployeeManagementSystem.model.Payroll;
@@ -70,7 +71,7 @@ public class AdminController {
 	}
     
 	@PostMapping("/addAdmin")
-	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) {
+	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) throws InvalidFieldException{
 		Admin result = adminService.addAdmin(admin);
 		ResponseEntity<Admin> response = new ResponseEntity<>(result, HttpStatus.OK);
 		return response;
