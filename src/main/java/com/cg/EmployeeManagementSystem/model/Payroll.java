@@ -15,7 +15,6 @@ public class Payroll {
    
 	@Id
 	@Column(name="payroll_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
 	
 	@Column(name="employee_noOfWorkingDays")

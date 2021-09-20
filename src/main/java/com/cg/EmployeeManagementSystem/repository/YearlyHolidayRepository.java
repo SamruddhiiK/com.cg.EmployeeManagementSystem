@@ -3,9 +3,9 @@ package com.cg.EmployeeManagementSystem.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cg.EmployeeManagementSystem.model.Employee;
+import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 
 @Repository
-public abstract interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface YearlyHolidayRepository extends JpaRepository<YearlyHolidayList, Integer>{
 
 }

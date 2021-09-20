@@ -1,11 +1,17 @@
 package com.cg.EmployeeManagementSystem.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
+import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.repository.AdminRepository;
 import com.cg.EmployeeManagementSystem.repository.EmployeeRepository;
 
@@ -15,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminRepository adminRepository;
     
-    @Autowired
+    @Autowired(required = false)
     EmployeeRepository employeeRepository;
     
 	@Override
@@ -32,25 +38,80 @@ public class AdminServiceImpl implements AdminService {
 		return admin;
 		
 	}
-	
-	public int deleteEmployee(int eid) {
-	    //LOG.info("Delete");
-	    try {
-	    	 employeeRepository.deleteById(eid);
-		  return eid;
-	    }catch(EmptyResultDataAccessException ex) {
-	    	//LOG.error("Employee ID Not Found!!");
-	    	return 0;
-	    }
-	}
-	
 	 
+	
+	   @Override
+		public int deleteAdmin(int adminId) {
+		//	LOG.info("deleteAdmin");
+			 adminRepository.deleteById(adminId);
+			return adminId;
+		}
+
 
 	@Override
 	public Employee updateEmploye(Employee employee) {
-		return employeeRepository.save(employee);
+		
+			  //LOG.info("Update");
+			  return employeeRepository.save(employee);
+		
 	}
 
 
+	@Override
+	public int deleteEmployee(int employeeId) {
+		try {
+			  employeeRepository.deleteById(employeeId);
+			  return employeeId;
+		    }catch(EmptyResultDataAccessException ex) {
+		    	//LOG.error("Employee ID Not Found!!");
+		    	return 0;
+		    }
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployee() {
+		try {
+			List<Employee> employeeList = employeeRepository.findAll();
+		    return employeeList;
+		}catch (NullPointerException e) {
+			return null;
+		}
+		
+	}
+
+
+	@Override
+	public Employee addEmployee(Employee employee) {
+		Employee add = employeeRepository.save(employee);
+		return add;
+	}
+
+
+	@Override
+	public Admin addAdmin(Admin admin) {
+		Admin result = adminRepository.save(admin);
+		return result;
+	}
+
+
+	@Override
+	public Admin getAdminById(int adminId) {
+		//LOG.info("getEmployeeById " + eid);
+				Optional<Admin> optAdmin = adminRepository.findById(adminId);
+				/*
+				 * if (optEmp.isEmpty()) throw new EmployeeNotFoundException(); else return
+				 * optEmp.get();
+				 */
+				return optAdmin.get();
+	}
+
+
+	@Override
+	public Employee getEmployeeById(int eid) {
+		Optional<Employee> optEmp = employeeRepository.findById(eid);
+		return optEmp.get();
+	}
+	
 	
 }
