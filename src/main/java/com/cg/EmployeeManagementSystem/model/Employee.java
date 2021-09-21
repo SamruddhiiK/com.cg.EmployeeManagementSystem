@@ -31,6 +31,11 @@ public class Employee {
 		super();
 	}
 
+	public Employee(int employeeId) {
+		super();
+		this.employeeId = employeeId;
+	}
+
 	public Employee(int employeeId, String employeePassword) {
 		super();
 		this.employeeId = employeeId;

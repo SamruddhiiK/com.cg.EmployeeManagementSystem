@@ -43,6 +43,7 @@ public class AdminController {
 	@Autowired
 	PayrollService payrollService;
 
+	// http://localhost:8082/AdminLogin
 	@PostMapping(path = "/AdminLogin")
 	public ResponseEntity<Admin> adminLogin(@RequestBody Admin admin) throws IncorrectLoginCredentialsException {
 		LOG.info("adminLogin Controller");
@@ -68,6 +69,7 @@ public class AdminController {
 		return response;
 	}
 
+	// http://localhost:8082//deleteEmp/{eid}
 	@DeleteMapping("/deleteEmp/{eid}")
 	public ResponseEntity<Integer> deleteEmployee(@PathVariable int eid) throws EmptyResultDataAccessException {
 		LOG.info("deleteEmployee Controller");
@@ -75,6 +77,7 @@ public class AdminController {
 		return new ResponseEntity<Integer>(id, HttpStatus.OK);
 	}
 
+	// http://localhost:8082//updateEmployee
 	@PutMapping("/updateEmployee")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) throws CouldNotUpdateException {
 		LOG.info("updateEmployee Controller");
@@ -82,6 +85,7 @@ public class AdminController {
 		return new ResponseEntity<Employee>(e, HttpStatus.OK);
 	}
 
+	// http://localhost:8082//addAdmin
 	@PostMapping("/addAdmin")
 	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) throws InvalidFieldException {
 		LOG.info("addAdmin Controller");
@@ -90,6 +94,7 @@ public class AdminController {
 		return response;
 	}
 
+	// http://localhost:8082//addEmployee
 	@PostMapping("/addEmployee")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
 		LOG.info("addEmployee Controller");
@@ -98,6 +103,7 @@ public class AdminController {
 		return response;
 	}
 
+	// http://localhost:8082//getAdminById{adminId}
 	@GetMapping("/getAdminById{adminId}")
 	public ResponseEntity<Admin> getAdminById(@PathVariable int adminId) {
 
@@ -106,6 +112,7 @@ public class AdminController {
 		return new ResponseEntity<Admin>(admin, HttpStatus.OK);
 	}
 
+	// http://localhost:8082//getEmployeeById{eid}
 	@GetMapping("/getEmployeeById{eid}")
 	public ResponseEntity<Employee> getEmpById(@PathVariable int eid) throws NoSuchRecordException {
 		LOG.info("getEmployeeById");
@@ -113,6 +120,7 @@ public class AdminController {
 		return new ResponseEntity<Employee>(emp, HttpStatus.OK);
 	}
 
+	// http://localhost:8082//updateSalary
 	@PutMapping("/updateSalary")
 	public ResponseEntity<Payroll> updateSalary(@RequestBody Payroll payroll) {
 		LOG.info("updateSalary Controller");
