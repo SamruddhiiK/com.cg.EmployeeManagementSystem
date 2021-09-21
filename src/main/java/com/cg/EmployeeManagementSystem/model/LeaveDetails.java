@@ -8,25 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="leave_details")
+@Table(name = "leave_details")
 public class LeaveDetails {
-	
+
 	@Id
-	@Column(name="leave_id")
+	@Column(name = "leave_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int leaveId;
-	
-	@Column(name="leave_fromDate")
-    private String leaveFromDate;
-	
-	@Column(name="leave_ToDate")
-    private String leaveToDate;
-	
-	@Column(name="leave_status")
-    private String leaveStatus;
-	
-	@Column(name="totalDays")
-    private int totalDays;
+	private int leaveId;
+
+	@Column(name = "leave_fromDate")
+	private String leaveFromDate;
+
+	@Column(name = "leave_ToDate")
+	private String leaveToDate;
+
+	@Column(name = "leave_status")
+	private String leaveStatus;
+
+	@Column(name = "totalDays")
+	private int totalDays;
 
 	public LeaveDetails() {
 		super();
@@ -86,6 +86,5 @@ public class LeaveDetails {
 		return "LeaveDetails [leaveId=" + leaveId + ", leaveFromDate=" + leaveFromDate + ", leaveToDate=" + leaveToDate
 				+ ", leaveStatus=" + leaveStatus + ", totalDays=" + totalDays + "]";
 	}
-	
-	
+
 }

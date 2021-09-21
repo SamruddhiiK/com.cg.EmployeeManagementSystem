@@ -9,12 +9,12 @@ import com.cg.EmployeeManagementSystem.model.Payroll;
 import com.cg.EmployeeManagementSystem.repository.PayrollRepository;
 
 @Service("payrollService")
-public class PayrollServiceImpl implements PayrollService{
-	
+public class PayrollServiceImpl implements PayrollService {
+
 	@Autowired
 	PayrollRepository payrollRepository;
-	
-	public Payroll updateSalary(Payroll payroll){
+
+	public Payroll updateSalary(Payroll payroll) {
 		Payroll result = payrollRepository.save(payroll);
 		return result;
 	}

@@ -8,87 +8,85 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="company_information")
+@Table(name = "company_information")
 public class CompanyInformation {
-	  
-		@Id
-		@Column(name="company_id")
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private int companyId;
-		
-		@Column(name="company_name")
-		private String companyName;
-		
-		@Column(name="date_of_establishment")
-		private String dateOfEstablishment;
-		
-		@Column(name="no_of_employees")
-		private int noOfEmployees;
-		
-		@Column(name="official_website")
-		private String officialWebsite;
 
-		public CompanyInformation() {
-			super();
-		}
+	@Id
+	@Column(name = "company_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int companyId;
 
-		public CompanyInformation(int companyId, String companyName, String dateOfEstablishment, int noOfEmployees,
-				String officialWebsite) {
-			super();
-			this.companyId = companyId;
-			this.companyName = companyName;
-			this.dateOfEstablishment = dateOfEstablishment;
-			this.noOfEmployees = noOfEmployees;
-			this.officialWebsite = officialWebsite;
-		}
+	@Column(name = "company_name")
+	private String companyName;
 
-		public int getCompanyId() {
-			return companyId;
-		}
+	@Column(name = "date_of_establishment")
+	private String dateOfEstablishment;
 
-		public void setCompanyId(int companyId) {
-			this.companyId = companyId;
-		}
+	@Column(name = "no_of_employees")
+	private int noOfEmployees;
 
-		public String getCompanyName() {
-			return companyName;
-		}
+	@Column(name = "official_website")
+	private String officialWebsite;
 
-		public void setCompanyName(String companyName) {
-			this.companyName = companyName;
-		}
+	public CompanyInformation() {
+		super();
+	}
 
-		public String getDateOfEstablishment() {
-			return dateOfEstablishment;
-		}
+	public CompanyInformation(int companyId, String companyName, String dateOfEstablishment, int noOfEmployees,
+			String officialWebsite) {
+		super();
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.dateOfEstablishment = dateOfEstablishment;
+		this.noOfEmployees = noOfEmployees;
+		this.officialWebsite = officialWebsite;
+	}
 
-		public void setDateOfEstablishment(String dateOfEstablishment) {
-			this.dateOfEstablishment = dateOfEstablishment;
-		}
+	public int getCompanyId() {
+		return companyId;
+	}
 
-		public int getNoOfEmployees() {
-			return noOfEmployees;
-		}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 
-		public void setNoOfEmployees(int noOfEmployees) {
-			this.noOfEmployees = noOfEmployees;
-		}
+	public String getCompanyName() {
+		return companyName;
+	}
 
-		public String getOfficialWebsite() {
-			return officialWebsite;
-		}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 
-		public void setOfficialWebsite(String officialWebsite) {
-			this.officialWebsite = officialWebsite;
-		}
+	public String getDateOfEstablishment() {
+		return dateOfEstablishment;
+	}
 
-		@Override
-		public String toString() {
-			return "CompanyInformation [companyId=" + companyId + ", companyName=" + companyName
-					+ ", dateOfEstablishment=" + dateOfEstablishment + ", noOfEmployees=" + noOfEmployees
-					+ ", officialWebsite=" + officialWebsite + "]";
-		}
-		
-		
+	public void setDateOfEstablishment(String dateOfEstablishment) {
+		this.dateOfEstablishment = dateOfEstablishment;
+	}
+
+	public int getNoOfEmployees() {
+		return noOfEmployees;
+	}
+
+	public void setNoOfEmployees(int noOfEmployees) {
+		this.noOfEmployees = noOfEmployees;
+	}
+
+	public String getOfficialWebsite() {
+		return officialWebsite;
+	}
+
+	public void setOfficialWebsite(String officialWebsite) {
+		this.officialWebsite = officialWebsite;
+	}
+
+	@Override
+	public String toString() {
+		return "CompanyInformation [companyId=" + companyId + ", companyName=" + companyName + ", dateOfEstablishment="
+				+ dateOfEstablishment + ", noOfEmployees=" + noOfEmployees + ", officialWebsite=" + officialWebsite
+				+ "]";
+	}
 
 }

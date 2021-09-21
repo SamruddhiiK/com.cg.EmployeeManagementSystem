@@ -7,20 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Holiday_List")
+@Table(name = "Holiday_List")
 public class YearlyHolidayList {
-  
+
 	@Id
-	@Column(name="serial_id")
+	@Column(name = "serial_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int serialNo;
-	
-	@Column(name="date")
+
+	@Column(name = "date")
 	private String date;
-	
-	@Column(name="holiday")
+
+	@Column(name = "holiday")
 	private String holiday;
 
 	public YearlyHolidayList() {
@@ -62,6 +61,5 @@ public class YearlyHolidayList {
 	public String toString() {
 		return "YearlyHolidayList [serialNo=" + serialNo + ", date=" + date + ", holiday=" + holiday + "]";
 	}
-	
-	
+
 }

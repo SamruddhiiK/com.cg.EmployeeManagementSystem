@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 
 @Repository
-public interface YearlyHolidayRepository extends JpaRepository<YearlyHolidayList, Integer>{
+public interface YearlyHolidayRepository extends JpaRepository<YearlyHolidayList, Integer> {
 
 }

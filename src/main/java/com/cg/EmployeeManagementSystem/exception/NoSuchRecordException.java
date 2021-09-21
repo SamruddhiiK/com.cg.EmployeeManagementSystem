@@ -1,11 +1,10 @@
 package com.cg.EmployeeManagementSystem.exception;
 
-public class InvalidFieldException extends RuntimeException {
+public class NoSuchRecordException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public InvalidFieldException(String message) {
+	public NoSuchRecordException(String message) {
 		super(message);
 	}
-
 }

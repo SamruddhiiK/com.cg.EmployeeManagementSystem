@@ -1,11 +1,9 @@
 package com.cg.EmployeeManagementSystem.exception;
 
-public class InvalidFieldException extends RuntimeException {
-
+public class CouldNotUpdateException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
-	public InvalidFieldException(String message) {
+	public CouldNotUpdateException(String message) {
 		super(message);
 	}
-
 }

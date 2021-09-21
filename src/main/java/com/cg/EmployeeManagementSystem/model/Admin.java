@@ -8,24 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="admin_details")
+@Table(name = "admin_details")
 public class Admin {
-	
-	 @Id
-	 @Column(name="admin_id")
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-      private int adminId;
-	 
-	 @Column(name="admin_name")
-      private String adminName;
-	 
-	 @Column(name="admin_password")
-      private String adminPassword;
+
+	@Id
+	@Column(name = "admin_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int adminId;
+
+	@Column(name = "admin_name", length = 50)
+	private String adminName;
+
+	@Column(name = "admin_password")
+	private String adminPassword;
 
 	public Admin() {
 		super();
 	}
-     
+
 	public Admin(int adminId, String adminPassword) {
 		super();
 		this.adminId = adminId;
@@ -67,6 +67,5 @@ public class Admin {
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
 	}
-	 
-	 
+
 }

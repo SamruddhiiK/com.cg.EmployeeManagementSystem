@@ -16,15 +16,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
- 
+	private static final Logger LOG = LoggerFactory.getLogger(SwaggerConfig.class);
 
-    private static final Logger LOG = LoggerFactory.getLogger(SwaggerConfig.class);
-
- 
-
-    public Docket api() {
-        LOG.info("SwaggerConfig Docket api");
-        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any()).build();
-    }
+	public Docket api() {
+		LOG.info("SwaggerConfig Docket api");
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any()).build();
+	}
 }

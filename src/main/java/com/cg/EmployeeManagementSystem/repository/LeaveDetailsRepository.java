@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.EmployeeManagementSystem.model.LeaveDetails;
 
-public interface LeaveDetailsRepository extends JpaRepository<LeaveDetails, Integer>{
+public interface LeaveDetailsRepository extends JpaRepository<LeaveDetails, Integer> {
 
 }
