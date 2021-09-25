@@ -36,7 +36,7 @@ public class AdminServiceImplTest {
 	@Test
 	void testAddAdmin() {
 
-		Admin expected = new Admin(4, "Admin5", "admin5");
+		Admin expected = new Admin(14, "Adminpq", "admin");
 		Admin actual = adminService.addAdmin(expected);
 		assertEquals(expected.getAdminId(), actual.getAdminId());
 		assertEquals(expected.getAdminName(), actual.getAdminName());
@@ -48,7 +48,7 @@ public class AdminServiceImplTest {
 	@Test
 	void testDeleteEmployee() {
 
-		Employee expected = new Employee(1);
+		Employee expected = new Employee(101);
 		int actual = adminService.deleteEmployee(expected.getEmployeeId());
 		assertEquals(expected.getEmployeeId(), actual);
 	}
@@ -57,7 +57,7 @@ public class AdminServiceImplTest {
 	@Test
 	void testDeleteAdmin() {
 
-		Admin expected = new Admin(7);
+		Admin expected = new Admin(2);
 		int actual = adminService.deleteAdmin(expected.getAdminId());
 		assertEquals(expected.getAdminId(), actual);
 	}
@@ -66,7 +66,7 @@ public class AdminServiceImplTest {
 	@Test
 	void testAddEmployee() {
 
-		Employee expected = new Employee(23, "yfb", "sjc");
+		Employee expected = new Employee(26, "yfb", "sjc");
 		Employee actual = adminService.addEmployee(expected);
 		assertEquals(expected.getEmployeeId(), actual.getEmployeeId());
 		assertEquals(expected.getEmployeeName(), actual.getEmployeeName());

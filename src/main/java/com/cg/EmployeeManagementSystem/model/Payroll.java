@@ -17,8 +17,20 @@ public class Payroll {
 
 	@Id
 	@Column(name = "payroll_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
+
+	@ManyToOne
+	@JoinColumn(name="eid")
+	Employee employee;
+	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	@Column(name = "employee_noOfWorkingDays")
 	private int noOfWorkingDays;
@@ -46,6 +58,18 @@ public class Payroll {
 			double salary) {
 		super();
 		this.payrollId = payrollId;
+		this.noOfWorkingDays = noOfWorkingDays;
+		this.month = month;
+		this.year = year;
+		this.salary = salary;
+	}
+	
+	
+
+	public Payroll(int payrollId, Employee employee, int noOfWorkingDays, String month, int year, double salary) {
+		super();
+		this.payrollId = payrollId;
+		this.employee = employee;
 		this.noOfWorkingDays = noOfWorkingDays;
 		this.month = month;
 		this.year = year;
@@ -91,11 +115,11 @@ public class Payroll {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-
+    
 	@Override
 	public String toString() {
-		return "Payroll [payrollId=" + payrollId + ", noOfWorkingDays=" + noOfWorkingDays + ", month=" + month
-				+ ", year=" + year + ", salary=" + salary + "]";
+		return "Payroll [payrollId=" + payrollId + ", employee=" + employee + ", noOfWorkingDays=" + noOfWorkingDays
+				+ ", month=" + month + ", year=" + year + ", salary=" + salary + "]";
 	}
 
 }

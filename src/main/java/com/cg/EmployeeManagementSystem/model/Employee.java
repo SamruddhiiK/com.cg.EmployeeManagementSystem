@@ -12,13 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 @Table(name = "employee_details")
 public class Employee {
 
 	@Id
 	@Column(name = "employee_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employeeId;
 
 	@Column(name = "employee_name")
@@ -26,6 +29,14 @@ public class Employee {
 
 	@Column(name = "employee_password")
 	private String employeePassword;
+	
+	@OneToMany
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(
+		    name = "pid",
+		    insertable = false,
+		    updatable = false)
+	List<Payroll> payroll;
 
 	public Employee() {
 		super();
@@ -47,6 +58,24 @@ public class Employee {
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.employeePassword = employeePassword;
+	}
+	
+	
+
+	public List<Payroll> getPayroll() {
+		return payroll;
+	}
+
+	public void setPayroll(List<Payroll> payroll) {
+		this.payroll = payroll;
+	}
+
+	public Employee(int employeeId, String employeeName, String employeePassword, List<Payroll> payroll) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeePassword = employeePassword;
+		this.payroll = payroll;
 	}
 
 	public int getEmployeeId() {
@@ -76,7 +105,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeePassword="
-				+ employeePassword + "]";
+				+ employeePassword + ", payroll=" + payroll + "]";
 	}
 
 }
