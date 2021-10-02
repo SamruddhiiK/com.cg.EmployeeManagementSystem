@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +15,7 @@ public class LeaveDetails {
 
 	@Id
 	@Column(name = "leave_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int leaveId;
 
 	@Column(name = "leave_fromDate")
@@ -24,21 +26,22 @@ public class LeaveDetails {
 
 	@Column(name = "leave_status")
 	private String leaveStatus;
-
-	@Column(name = "totalDays")
-	private int totalDays;
-
+    
+	@ManyToOne
+	@JoinColumn(name="eid")
+	Employee employee;
+	
 	public LeaveDetails() {
 		super();
 	}
 
-	public LeaveDetails(int leaveId, String leaveFromDate, String leaveToDate, String leaveStatus, int totalDays) {
+	public LeaveDetails(int leaveId, String leaveFromDate, String leaveToDate, String leaveStatus, Employee employee) {
 		super();
 		this.leaveId = leaveId;
 		this.leaveFromDate = leaveFromDate;
 		this.leaveToDate = leaveToDate;
 		this.leaveStatus = leaveStatus;
-		this.totalDays = totalDays;
+		this.employee = employee;
 	}
 
 	public int getLeaveId() {
@@ -73,18 +76,20 @@ public class LeaveDetails {
 		this.leaveStatus = leaveStatus;
 	}
 
-	public int getTotalDays() {
-		return totalDays;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setTotalDays(int totalDays) {
-		this.totalDays = totalDays;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
 	public String toString() {
 		return "LeaveDetails [leaveId=" + leaveId + ", leaveFromDate=" + leaveFromDate + ", leaveToDate=" + leaveToDate
-				+ ", leaveStatus=" + leaveStatus + ", totalDays=" + totalDays + "]";
+				+ ", leaveStatus=" + leaveStatus + ", employee=" + employee + "]";
 	}
-
+    
+	
+	
 }

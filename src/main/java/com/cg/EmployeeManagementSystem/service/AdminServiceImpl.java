@@ -138,5 +138,5 @@ public class AdminServiceImpl implements AdminService {
 		LOG.info("Update Salary");
 		return payrollRepository.save(payroll);
 	}
-
+	
 }

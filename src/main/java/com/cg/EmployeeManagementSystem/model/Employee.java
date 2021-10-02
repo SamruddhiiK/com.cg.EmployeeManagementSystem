@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
@@ -37,6 +38,22 @@ public class Employee {
 		    insertable = false,
 		    updatable = false)
 	List<Payroll> payroll;
+	
+	@OneToMany
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(
+		    name = "lid",
+		    insertable = false,
+		    updatable = false)
+	List<LeaveDetails> leaveDetails;
+
+	@OneToOne
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(
+		    name = "resignid",
+		    insertable = false,
+		    updatable = false)
+	ResignationDetails resignation;
 
 	public Employee() {
 		super();
@@ -62,6 +79,14 @@ public class Employee {
 	
 	
 
+	public List<LeaveDetails> getLeaveDetails() {
+		return leaveDetails;
+	}
+
+	public void setLeaveDetails(List<LeaveDetails> leaveDetails) {
+		this.leaveDetails = leaveDetails;
+	}
+
 	public List<Payroll> getPayroll() {
 		return payroll;
 	}
@@ -76,6 +101,30 @@ public class Employee {
 		this.employeeName = employeeName;
 		this.employeePassword = employeePassword;
 		this.payroll = payroll;
+	}
+
+	
+	public Employee(int employeeId, String employeeName, String employeePassword, List<Payroll> payroll,
+			List<LeaveDetails> leaveDetails) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeePassword = employeePassword;
+		this.payroll = payroll;
+		this.leaveDetails = leaveDetails;
+	}
+	
+	
+
+	public Employee(int employeeId, String employeeName, String employeePassword, List<Payroll> payroll,
+			List<LeaveDetails> leaveDetails, ResignationDetails resignation) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+		this.employeePassword = employeePassword;
+		this.payroll = payroll;
+		this.leaveDetails = leaveDetails;
+		this.resignation = resignation;
 	}
 
 	public int getEmployeeId() {
@@ -102,10 +151,20 @@ public class Employee {
 		this.employeePassword = employeePassword;
 	}
 
+	
+	public ResignationDetails getResignation() {
+		return resignation;
+	}
+
+	public void setResignation(ResignationDetails resignation) {
+		this.resignation = resignation;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", employeePassword="
-				+ employeePassword + ", payroll=" + payroll + "]";
+				+ employeePassword + ", payroll=" + payroll + ", leaveDetails=" + leaveDetails + ", resignation="
+				+ resignation + "]";
 	}
 
 }

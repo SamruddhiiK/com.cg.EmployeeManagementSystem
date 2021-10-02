@@ -26,11 +26,15 @@ import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
+import com.cg.EmployeeManagementSystem.model.LeaveDetails;
 import com.cg.EmployeeManagementSystem.model.Payroll;
+import com.cg.EmployeeManagementSystem.model.ResignationDetails;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.service.AdminService;
 import com.cg.EmployeeManagementSystem.service.AdminServiceImpl;
+import com.cg.EmployeeManagementSystem.service.LeaveDetailsServiceImpl;
 import com.cg.EmployeeManagementSystem.service.PayrollService;
+import com.cg.EmployeeManagementSystem.service.ResignationDetailsService;
 
 @RestController
 public class AdminController {
@@ -42,6 +46,12 @@ public class AdminController {
 
 	@Autowired
 	PayrollService payrollService;
+	
+	@Autowired
+	ResignationDetailsService resignationService;
+	
+	@Autowired
+	LeaveDetailsServiceImpl leaveService;
 
 	// http://localhost:8082/AdminLogin
 	@PostMapping(path = "/AdminLogin")
@@ -128,5 +138,40 @@ public class AdminController {
 		ResponseEntity<Payroll> response = new ResponseEntity<>(result, HttpStatus.OK);
 		return response;
 	}
+	
+	// http://localhost:8082/getAllResignations
+		@GetMapping("/getAllResignations")
+		public ResponseEntity<List<ResignationDetails>> getAllResignations() throws NullPointerException {
+			LOG.info("getAllResignations Controller");
+			List<ResignationDetails> resignationsList = resignationService.getAllResignations();
+			ResponseEntity<List<ResignationDetails>> response = new ResponseEntity<List<ResignationDetails>>(resignationsList, HttpStatus.OK);
+			return response;
+		}
+	
+	// http://localhost:8082//UpdateResignationStatus
+	@PutMapping("/updateResignationStatus")
+	public ResponseEntity<ResignationDetails> updateResignationStatus(@RequestBody ResignationDetails resignationDetails) {
+		LOG.info("updateResign Controller");
+		ResignationDetails result = resignationService.updateResignStatus(resignationDetails);
+		ResponseEntity<ResignationDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
+		return response;
+	}
 
+	// http://localhost:8082/getAllLeaves
+			@GetMapping("/getAllLeaves")
+			public ResponseEntity<List<LeaveDetails>> getAllLeaves() throws NullPointerException {
+				LOG.info("getAllLeaveDetails Controller");
+				List<LeaveDetails> leaveList = leaveService.getAllLeaves();
+				ResponseEntity<List<LeaveDetails>> response = new ResponseEntity<List<LeaveDetails>>(leaveList, HttpStatus.OK);
+				return response;
+			}
+			
+			// http://localhost:8082//UpdateLeaveStatus
+			@PutMapping("/updateLeaveStatus")
+			public ResponseEntity<LeaveDetails> updateResignationStatus(@RequestBody LeaveDetails leaveDetails) {
+				LOG.info("updateLeave Controller");
+				LeaveDetails result = leaveService.updateLeaveStatus(leaveDetails);
+				ResponseEntity<LeaveDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
+				return response;
+			}
 }

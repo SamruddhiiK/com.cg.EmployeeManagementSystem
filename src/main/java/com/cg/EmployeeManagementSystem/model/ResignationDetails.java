@@ -2,33 +2,48 @@ package com.cg.EmployeeManagementSystem.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "Resignation_details")
 public class ResignationDetails {
 
 	@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "application_id")
 	private int applicationId;
 
 	@Column(name = "status")
 	private String status;
 
-	@Column(name = "employee_Id")
-	private int employeeId;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(
+		    name = "ApplId",
+		    insertable = false,
+		    updatable = false)
+	Employee employee;
 
 	public ResignationDetails() {
 		super();
 	}
 
-	public ResignationDetails(int applicationId, int employeeId) {
+	public ResignationDetails(int applicationId, String status, Employee employee) {
 		super();
 		this.applicationId = applicationId;
-		this.employeeId = employeeId;
+		this.status = status;
+		this.employee = employee;
 	}
 
 	public int getApplicationId() {
@@ -47,25 +62,20 @@ public class ResignationDetails {
 		this.status = status;
 	}
 
-	public int getEmployeeId() {
-		return employeeId;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
-	}
-
-	public ResignationDetails(int applicationId, String status, int employeeId) {
-		super();
-		this.applicationId = applicationId;
-		this.status = status;
-		this.employeeId = employeeId;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
 	public String toString() {
-		return "ResignationDetails [applicationId=" + applicationId + ", status=" + status + ", employeeId="
-				+ employeeId + "]";
+		return "ResignationDetails [applicationId=" + applicationId + ", status=" + status + ", employee=" + employee
+				+ "]";
 	}
-
+	
+	
+	
 }

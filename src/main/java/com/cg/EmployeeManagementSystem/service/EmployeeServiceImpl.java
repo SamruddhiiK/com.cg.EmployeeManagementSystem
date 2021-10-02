@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.cg.EmployeeManagementSystem.Application;
+import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.CompanyInformation;
@@ -74,6 +75,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOG.info("Add Resignation");
 		ResignationDetails result = resignationDetailsRepository.save(resignationDetails);
 		return result;
+	}
+
+	@Override
+	public Employee loginEmployee(int employeeId, String password) throws IncorrectLoginCredentialsException {
+		Employee employee = null;
+
+		if (employeeRepository.existsById(employeeId)
+				&& employeeRepository.findById(employeeId).get().getEmployeePassword().equals(password)) {
+			employee = employeeRepository.findById(employeeId).get();
+			LOG.info("Employee login is  successfull");
+			return employee;
+		}
+		LOG.equals("Incorrect Details");
+		throw new IncorrectLoginCredentialsException("Invalid Credentials");
 	}
 
 }

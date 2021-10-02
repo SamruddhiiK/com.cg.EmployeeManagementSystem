@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.EmployeeManagementSystem.Application;
+import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.CompanyInformation;
 import com.cg.EmployeeManagementSystem.model.Employee;
+import com.cg.EmployeeManagementSystem.model.LeaveDetails;
 import com.cg.EmployeeManagementSystem.model.Payroll;
 import com.cg.EmployeeManagementSystem.model.ResignationDetails;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.service.EmployeeService;
+import com.cg.EmployeeManagementSystem.service.LeaveDetailsServiceImpl;
+import com.cg.EmployeeManagementSystem.service.ResignationDetailsService;
 
 @RestController
 public class EmployeeController {
@@ -31,6 +35,21 @@ public class EmployeeController {
 
 	@Autowired
 	EmployeeService employeeService;
+	
+	@Autowired
+	LeaveDetailsServiceImpl leaveDetail;
+	
+	@Autowired
+	ResignationDetailsService resignDetail;
+	
+	// http://localhost:8082/EmployeeLogin
+		@PostMapping(path = "/EmployeeLogin")
+		public ResponseEntity<Employee> employeeLogin(@RequestBody Employee employee) throws IncorrectLoginCredentialsException {
+			LOG.info("employeeLogin Controller");
+			Employee result = employeeService.loginEmployee(employee.getEmployeeId(), employee.getEmployeePassword());
+			ResponseEntity<Employee> response = new ResponseEntity<>(result, HttpStatus.OK);
+			return response;
+		}
 
 	@GetMapping("/getYearlyHolidayList")
 	public ResponseEntity<List<YearlyHolidayList>> getYearlyHolidayList() {
@@ -65,5 +84,28 @@ public class EmployeeController {
 		ResponseEntity<ResignationDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
 		return response;
 	}
+	
+	@PostMapping("/addLeave")
+	public ResponseEntity<LeaveDetails> addLeave(@RequestBody LeaveDetails leave) {
+		LOG.info("addLeave Controller");
+		LeaveDetails result = leaveDetail.addLeave(leave);
+		ResponseEntity<LeaveDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
+		return response;
+	}
+	
+	@GetMapping("/getLeaveDetails/{leaveId}")
+	public ResponseEntity<LeaveDetails> getLeaveDetails(@PathVariable int leaveId) throws NoSuchRecordException {
+		LOG.info("Get Leave Details");
+		LeaveDetails leaveDetails = leaveDetail.getLeaveDetails(leaveId);
+		ResponseEntity<LeaveDetails> response = new ResponseEntity<LeaveDetails>(leaveDetails, HttpStatus.OK);
+		return response;
+	}
 
+	@GetMapping("/viewResignationStatus/{resignId}")
+	public ResponseEntity<ResignationDetails> getResignDetails(@PathVariable int resignId) throws NoSuchRecordException {
+		LOG.info("Get Resign Details");
+		ResignationDetails resignDetails = resignDetail.getResignDetails(resignId);
+		ResponseEntity<ResignationDetails> response = new ResponseEntity<ResignationDetails>(resignDetails, HttpStatus.OK);
+		return response;
+	}
 }
