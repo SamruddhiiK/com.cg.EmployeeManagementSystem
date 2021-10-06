@@ -57,9 +57,12 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int deleteAdmin(int adminId) throws NoSuchRecordException {
-		LOG.info("delete Admin");
-		adminRepository.deleteById(adminId);
-		return adminId;
+		if (adminRepository.existsById(adminId)) {
+			adminRepository.deleteById(adminId);
+			return adminId;
+		}
+		LOG.error("The entered id is not exist");
+		throw new NoSuchRecordException("No Such Admin Id is present");
 	}
 
 	@Override

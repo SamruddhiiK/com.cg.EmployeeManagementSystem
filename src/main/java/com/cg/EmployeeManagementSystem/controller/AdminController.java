@@ -66,10 +66,10 @@ public class AdminController {
 
 	// http://localhost:8082/deleteAdmin/{Id}
 	@DeleteMapping("/deleteAdmin/{AdminId}")
-	public int deleteAdmin(@PathVariable int AdminId) throws NoSuchRecordException {
+	public ResponseEntity<Integer> deleteAdmin(@PathVariable int AdminId) throws NoSuchRecordException {
 		LOG.info("deleteAdmin Controller");
 		int result = adminService.deleteAdmin(AdminId);
-		return result;
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// http://localhost:8082/getAllEmployee
