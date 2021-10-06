@@ -55,4 +55,13 @@ public class LeaveDetailsServiceImpl {
 
 		}
 	
+	 public Optional<List<LeaveDetails>> getLeaveDetailsByEmpId(int employeeId) throws NoSuchRecordException {
+			Optional<List<LeaveDetails>> result = leaveDetailsRepository.findAllLeavesByEmployee(employeeId);
+			if (!result.isEmpty()) {
+				//LOG.info("Salary Details");
+				return result;
+			}
+			//LOG.error("Id not found");
+			throw new NoSuchRecordException("Payroll for given id does not exists!");
+	 }
 }

@@ -23,6 +23,7 @@ import com.cg.EmployeeManagementSystem.Application;
 import com.cg.EmployeeManagementSystem.exception.CouldNotUpdateException;
 import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
+import com.cg.EmployeeManagementSystem.exception.NoRecordException;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
@@ -35,6 +36,7 @@ import com.cg.EmployeeManagementSystem.service.AdminServiceImpl;
 import com.cg.EmployeeManagementSystem.service.LeaveDetailsServiceImpl;
 import com.cg.EmployeeManagementSystem.service.PayrollService;
 import com.cg.EmployeeManagementSystem.service.ResignationDetailsService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @RestController
 public class AdminController {
@@ -72,7 +74,7 @@ public class AdminController {
 
 	// http://localhost:8082/getAllEmployee
 	@GetMapping("/getAllEmployee")
-	public ResponseEntity<List<Employee>> getAllEmployee() throws NullPointerException {
+	public ResponseEntity<List<Employee>> getAllEmployee() throws NoRecordException {
 		LOG.info("getAllEmployee Controller");
 		List<Employee> employeeList = adminService.getAllEmployee();
 		ResponseEntity<List<Employee>> response = new ResponseEntity<List<Employee>>(employeeList, HttpStatus.OK);
@@ -81,7 +83,7 @@ public class AdminController {
 
 	// http://localhost:8082//deleteEmp/{eid}
 	@DeleteMapping("/deleteEmp/{eid}")
-	public ResponseEntity<Integer> deleteEmployee(@PathVariable int eid) throws EmptyResultDataAccessException {
+	public ResponseEntity<Integer> deleteEmployee(@PathVariable int eid) throws NoSuchRecordException {
 		LOG.info("deleteEmployee Controller");
 		int id = adminService.deleteEmployee(eid);
 		return new ResponseEntity<Integer>(id, HttpStatus.OK);
@@ -97,21 +99,27 @@ public class AdminController {
 
 	// http://localhost:8082//addAdmin
 	@PostMapping("/addAdmin")
-	public ResponseEntity<Admin> addAdmin(@RequestBody Admin admin) throws InvalidFieldException {
-		LOG.info("addAdmin Controller");
-		Admin result = adminService.addAdmin(admin);
-		ResponseEntity<Admin> response = new ResponseEntity<>(result, HttpStatus.OK);
+	public ResponseEntity<String> addAdmin(@RequestBody Admin admin) {
+		LOG.info("addAdmin");
+		 ResponseEntity<String>response=null;
+		if(adminService.addAdmin(admin)) {
+		response= new ResponseEntity<String>(admin.toString(), HttpStatus.OK);
+	}
 		return response;
 	}
 
+
 	// http://localhost:8082//addEmployee
 	@PostMapping("/addEmployee")
-	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-		LOG.info("addEmployee Controller");
-		Employee result = adminService.addEmployee(employee);
-		ResponseEntity<Employee> response = new ResponseEntity<>(result, HttpStatus.OK);
+	public ResponseEntity<String> addEmployee(@RequestBody Employee employee) {
+		LOG.info("addEmployee");
+		 ResponseEntity<String>response=null;
+		if(adminService.addEmployee(employee)) {
+		response= new ResponseEntity<String>(employee.toString(), HttpStatus.OK);
+	}
 		return response;
 	}
+
 
 	// http://localhost:8082//getAdminById{adminId}
 	@GetMapping("/getAdminById{adminId}")

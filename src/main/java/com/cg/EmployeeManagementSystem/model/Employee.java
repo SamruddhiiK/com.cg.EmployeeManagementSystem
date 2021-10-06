@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "employee_details")
@@ -31,13 +33,21 @@ public class Employee {
 	@Column(name = "employee_password")
 	private String employeePassword;
 	
-	@OneToMany
+	
+	@OneToMany(cascade =
+        {
+                CascadeType.DETACH,
+                CascadeType.MERGE,
+                CascadeType.REFRESH,
+                CascadeType.PERSIST
+        })
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(
 		    name = "pid",
 		    insertable = false,
 		    updatable = false)
 	List<Payroll> payroll;
+	
 	
 	@OneToMany
 	@NotFound(action = NotFoundAction.IGNORE)
@@ -47,6 +57,7 @@ public class Employee {
 		    updatable = false)
 	List<LeaveDetails> leaveDetails;
 
+	
 	@OneToOne
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(

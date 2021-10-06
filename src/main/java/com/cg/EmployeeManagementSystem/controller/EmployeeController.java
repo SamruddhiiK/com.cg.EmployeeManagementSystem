@@ -1,6 +1,7 @@
 package com.cg.EmployeeManagementSystem.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ import com.cg.EmployeeManagementSystem.model.ResignationDetails;
 import com.cg.EmployeeManagementSystem.model.YearlyHolidayList;
 import com.cg.EmployeeManagementSystem.service.EmployeeService;
 import com.cg.EmployeeManagementSystem.service.LeaveDetailsServiceImpl;
+import com.cg.EmployeeManagementSystem.service.PayrollServiceImpl;
 import com.cg.EmployeeManagementSystem.service.ResignationDetailsService;
 
 @RestController
@@ -41,6 +43,9 @@ public class EmployeeController {
 	
 	@Autowired
 	ResignationDetailsService resignDetail;
+	
+	@Autowired
+	PayrollServiceImpl payrollService;
 	
 	// http://localhost:8082/EmployeeLogin
 		@PostMapping(path = "/EmployeeLogin")
@@ -106,6 +111,22 @@ public class EmployeeController {
 		LOG.info("Get Resign Details");
 		ResignationDetails resignDetails = resignDetail.getResignDetails(resignId);
 		ResponseEntity<ResignationDetails> response = new ResponseEntity<ResignationDetails>(resignDetails, HttpStatus.OK);
+		return response;
+	}
+	
+	@GetMapping("/getSalaryDetailsByEmployeeId/{employeeId}")
+	public ResponseEntity<Optional<List<Payroll>>> getSalaryDetailsByEmployeeId(@PathVariable int employeeId) throws NoSuchRecordException {
+		LOG.info("Get Salary Details");
+		Optional<List<Payroll>> payroll = payrollService.getSalaryDetailsByEmployeeId(employeeId);
+		ResponseEntity<Optional<List<Payroll>>> response = new ResponseEntity<Optional<List<Payroll>>>(payroll, HttpStatus.OK);
+		return response;
+	}
+	
+	@GetMapping("/getLeaveDetailsByEmployeeId/{employeeId}")
+	public ResponseEntity<Optional<List<LeaveDetails>>> getLeaveDetailsByEmployeeId(@PathVariable int employeeId) throws NoSuchRecordException {
+		LOG.info("Get Leave Details");
+		Optional<List<LeaveDetails>> leaveDetails = leaveDetail.getLeaveDetailsByEmpId(employeeId);
+		ResponseEntity<Optional<List<LeaveDetails>>> response = new ResponseEntity<Optional<List<LeaveDetails>>>(leaveDetails, HttpStatus.OK);
 		return response;
 	}
 }

@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "Resignation_details")
@@ -27,6 +29,7 @@ public class ResignationDetails {
 	private String status;
 
 	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@PrimaryKeyJoinColumn
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(

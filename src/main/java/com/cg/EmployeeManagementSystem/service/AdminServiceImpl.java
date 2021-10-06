@@ -4,6 +4,8 @@ import java.util.List;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import com.cg.EmployeeManagementSystem.Application;
 import com.cg.EmployeeManagementSystem.exception.CouldNotUpdateException;
 import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
+import com.cg.EmployeeManagementSystem.exception.NoRecordException;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Admin;
 import com.cg.EmployeeManagementSystem.model.Employee;
@@ -60,51 +63,76 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Employee updateEmployee(Employee employee) throws CouldNotUpdateException {
-
-		LOG.info("Update Employee");
-		Employee result = employeeRepository.save(employee);
-		return result;
-	}
-
-	@Override
-	public int deleteEmployee(int employeeId) {
-		try {
-			LOG.info("Employee Deleted Successfully");
-			employeeRepository.deleteById(employeeId);
-			return employeeId;
-		} catch (EmptyResultDataAccessException ex) {
+	public Employee updateEmployee(Employee employee) throws NoSuchRecordException {
+		if (employeeRepository.existsById(employee.getEmployeeId())) {
+			LOG.info("Update Employee");
+			Employee result = employeeRepository.save(employee);
+			return result;
+		} else {
 			LOG.error("Employee ID Not Found!!");
-			return 0;
+			throw new NoSuchRecordException("No such id is present");
 		}
 	}
 
 	@Override
-	public List<Employee> getAllEmployee() throws NullPointerException {
-		try {
+	public int deleteEmployee(int employeeId) throws NoSuchRecordException{
+		if (employeeRepository.existsById(employeeId)) {
+			employeeRepository.deleteById(employeeId);
+			return employeeId;
+		}
+		LOG.error("The entered id is not exist");
+		throw new NoSuchRecordException("No Such employee Id is present");
+	}
+
+	@Override
+	public List<Employee> getAllEmployee() throws NoRecordException {
+		if(employeeRepository.count()!=0L) {
+			
 			LOG.info("Get All Employees");
 			List<Employee> employeeList = employeeRepository.findAll();
 			return employeeList;
-		} catch (NullPointerException e) {
-			LOG.error("Employee List is empty!");
-			return null;
 		}
-
+			LOG.error("Employee List is empty!");
+			throw new NoRecordException("List is empty");
 	}
 
-	@Override
-	public Employee addEmployee(Employee employee) {
-		LOG.info("Add Employee");
-		Employee add = employeeRepository.save(employee);
-		return add;
+	@Transactional
+	public boolean addEmployee(Employee employee) throws InvalidFieldException {
+		if (employee.getEmployeeName() != null && employee.getEmployeePassword() != null && employee.getEmployeeId() != 0) {
+			boolean result = false;
+			String name = employee.getEmployeeName();
+			String regex = "^[A-Za-z ]+";
+			if (name.matches(regex)) {
+				employee = employeeRepository.save(employee);
+				result = true;
+				LOG.info("Employee is added successfully");
+				return result;
+			}
+
+			LOG.error("incorrect details");
+			throw new InvalidFieldException("Invalid");
+		}
+		throw new InvalidFieldException("Invalid");
 	}
 
-	@Override
-	public Admin addAdmin(Admin admin) throws InvalidFieldException {
-		LOG.info("Add Admin");
-		Admin result = adminRepository.save(admin);
-		return result;
 
+	@Transactional
+	public boolean addAdmin(Admin admin) throws InvalidFieldException {
+		if (admin.getAdminName() != null && admin.getAdminPassword() != null && admin.getAdminId() != 0) {
+			boolean result = false;
+			String name = admin.getAdminName();
+			String regex = "^[A-Za-z ]+";
+			if (name.matches(regex)) {
+				admin = adminRepository.save(admin);
+				result = true;
+				LOG.info("Admin is added successfully");
+				return result;
+			}
+
+			LOG.error("incorrect details");
+			throw new InvalidFieldException("Invalid");
+		}
+		throw new InvalidFieldException("Invalid");
 	}
 
 	@Override

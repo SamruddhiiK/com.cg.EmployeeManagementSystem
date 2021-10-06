@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "payroll_details")
 public class Payroll {
@@ -20,7 +23,13 @@ public class Payroll {
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
 
-	@ManyToOne
+	@ManyToOne(cascade =
+        {
+                CascadeType.DETACH,
+                CascadeType.MERGE,
+                CascadeType.REFRESH,
+                CascadeType.PERSIST
+        })
 	@JoinColumn(name="eid")
 	Employee employee;
 	
@@ -54,7 +63,7 @@ public class Payroll {
 		this.salary = salary;
 	}
 
-	public Payroll(int payrollId, String bankName, String bankAccountNo, int noOfWorkingDays, String month, int year,
+	public Payroll(int payrollId, int noOfWorkingDays, String month, int year,
 			double salary) {
 		super();
 		this.payrollId = payrollId;
