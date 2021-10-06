@@ -61,7 +61,7 @@ public class AdminServiceImpl implements AdminService {
 			adminRepository.deleteById(adminId);
 			return adminId;
 		}
-		LOG.error("The entered id is not exist");
+		LOG.error("The entered id does not exist");
 		throw new NoSuchRecordException("No Such Admin Id is present");
 	}
 
@@ -165,9 +165,14 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Payroll updateSalary(Payroll payroll) {
+	public Payroll updateSalary(Payroll payroll) throws NoRecordException{
+		if(payrollRepository.existsById(payroll.getEmployee().getEmployeeId())){
 		LOG.info("Update Salary");
 		return payrollRepository.save(payroll);
+		}else {
+			LOG.error("Employee ID Not Found!!");
+			throw new NoSuchRecordException("No such id is present");
+		}
 	}
 	
 }

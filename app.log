@@ -2481,3 +2481,68 @@ org.springframework.dao.EmptyResultDataAccessException: No class com.cg.Employee
 2021-10-06 11:17:35.038  INFO 12268 --- [http-nio-8082-exec-7] c.c.E.controller.AdminController         : deleteAdmin Controller
 2021-10-06 11:17:35.050 ERROR 12268 --- [http-nio-8082-exec-7] c.c.E.service.AdminServiceImpl           : The entered id is not exist
 2021-10-06 11:17:35.051  WARN 12268 --- [http-nio-8082-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.cg.EmployeeManagementSystem.exception.NoSuchRecordException: No Such Admin Id is present]
+2021-10-06 11:20:39.060  INFO 12268 --- [Thread-67] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-10-06 11:20:39.060  INFO 12268 --- [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2021-10-06 11:20:39.063  INFO 12268 --- [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2021-10-06 11:20:39.146  INFO 12268 --- [restartedMain] c.c.E.Application                        : Start
+2021-10-06 11:20:39.184  INFO 12268 --- [restartedMain] c.c.E.Application                        : Starting Application using Java 16.0.2 on DESKTOP-LU6DK1K with PID 12268 (C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem\target\classes started by Samruddhi in C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem)
+2021-10-06 11:20:39.184  INFO 12268 --- [restartedMain] c.c.E.Application                        : No active profile set, falling back to default profiles: default
+2021-10-06 11:20:39.450  INFO 12268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-06 11:20:39.476  INFO 12268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 7 JPA repository interfaces.
+2021-10-06 11:20:39.548  INFO 12268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-10-06 11:20:39.548  INFO 12268 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-06 11:20:39.548  INFO 12268 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-06 11:20:39.584  INFO 12268 --- [restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2021-10-06 11:20:39.584  INFO 12268 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 398 ms
+2021-10-06 11:20:39.614  INFO 12268 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-06 11:20:39.619  INFO 12268 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2021-10-06 11:20:39.691  INFO 12268 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2021-10-06 11:20:39.692  INFO 12268 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-10-06 11:20:40.594  INFO 12268 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-06 11:20:40.595  INFO 12268 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-06 11:20:40.774  WARN 12268 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-06 11:20:40.808  INFO 12268 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-06 11:20:40.836  INFO 12268 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-10-06 11:20:40.885  INFO 12268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-10-06 11:20:40.885  INFO 12268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-06 11:20:40.886  INFO 12268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-06 11:20:40.893  INFO 12268 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-06 11:20:40.943  INFO 12268 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateResignationStatusUsingPUT_1
+2021-10-06 11:20:41.006  INFO 12268 --- [restartedMain] c.c.E.Application                        : Started Application in 1.854 seconds (JVM running for 4482.443)
+2021-10-06 11:20:41.008  INFO 12268 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-10-06 11:20:41.008  INFO 12268 --- [restartedMain] c.c.E.Application                        : End
+2021-10-06 11:26:13.363  INFO 12268 --- [Thread-71] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-10-06 11:26:13.363  INFO 12268 --- [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2021-10-06 11:26:13.364  INFO 12268 --- [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2021-10-06 11:26:13.435  INFO 12268 --- [restartedMain] c.c.E.Application                        : Start
+2021-10-06 11:26:13.467  INFO 12268 --- [restartedMain] c.c.E.Application                        : Starting Application using Java 16.0.2 on DESKTOP-LU6DK1K with PID 12268 (C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem\target\classes started by Samruddhi in C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem)
+2021-10-06 11:26:13.467  INFO 12268 --- [restartedMain] c.c.E.Application                        : No active profile set, falling back to default profiles: default
+2021-10-06 11:26:13.739  INFO 12268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-06 11:26:13.766  INFO 12268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 7 JPA repository interfaces.
+2021-10-06 11:26:13.847  INFO 12268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-10-06 11:26:13.848  INFO 12268 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-06 11:26:13.848  INFO 12268 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-06 11:26:13.890  INFO 12268 --- [restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2021-10-06 11:26:13.890  INFO 12268 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 421 ms
+2021-10-06 11:26:13.925  INFO 12268 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-06 11:26:13.930  INFO 12268 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Starting...
+2021-10-06 11:26:14.004  INFO 12268 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Start completed.
+2021-10-06 11:26:14.005  INFO 12268 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-10-06 11:26:14.835  INFO 12268 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-06 11:26:14.835  INFO 12268 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-06 11:26:15.013  WARN 12268 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-06 11:26:15.047  INFO 12268 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-06 11:26:15.083  INFO 12268 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-10-06 11:26:15.184  INFO 12268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-10-06 11:26:15.185  INFO 12268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-06 11:26:15.186  INFO 12268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-06 11:26:15.191  INFO 12268 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-06 11:26:15.239  INFO 12268 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateResignationStatusUsingPUT_1
+2021-10-06 11:26:15.303  INFO 12268 --- [restartedMain] c.c.E.Application                        : Started Application in 1.862 seconds (JVM running for 4816.739)
+2021-10-06 11:26:15.305  INFO 12268 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-10-06 11:26:15.306  INFO 12268 --- [restartedMain] c.c.E.Application                        : End
+2021-10-06 11:26:20.531  INFO 12268 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-06 11:26:20.531  INFO 12268 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-10-06 11:26:20.532  INFO 12268 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-10-06 11:27:18.235  INFO 12268 --- [http-nio-8082-exec-6] c.c.E.controller.AdminController         : updateSalary Controller
+2021-10-06 11:29:08.788  INFO 12268 --- [http-nio-8082-exec-8] c.c.E.controller.EmployeeController      : Get Salary Details
