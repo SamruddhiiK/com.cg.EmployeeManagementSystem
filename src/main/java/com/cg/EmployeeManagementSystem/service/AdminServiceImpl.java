@@ -2,6 +2,7 @@ package com.cg.EmployeeManagementSystem.service;
 
 import java.util.List;
 
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -14,7 +15,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.cg.EmployeeManagementSystem.Application;
-import com.cg.EmployeeManagementSystem.exception.CouldNotUpdateException;
+
 import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
 import com.cg.EmployeeManagementSystem.exception.NoRecordException;
@@ -76,6 +77,7 @@ public class AdminServiceImpl implements AdminService {
 			throw new NoSuchRecordException("No such id is present");
 		}
 	}
+	
 
 	@Override
 	public int deleteEmployee(int employeeId) throws NoSuchRecordException{

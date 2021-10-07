@@ -2,6 +2,7 @@ package com.cg.EmployeeManagementSystem.controller;
 
 import java.util.List;
 
+
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.EmployeeManagementSystem.Application;
 
-import com.cg.EmployeeManagementSystem.exception.CouldNotUpdateException;
+
 import com.cg.EmployeeManagementSystem.exception.IncorrectLoginCredentialsException;
 import com.cg.EmployeeManagementSystem.exception.InvalidFieldException;
 import com.cg.EmployeeManagementSystem.exception.NoRecordException;
@@ -91,7 +92,7 @@ public class AdminController {
 
 	// http://localhost:8082//updateEmployee
 	@PutMapping("/updateEmployee")
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) throws CouldNotUpdateException {
+	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) throws NoSuchRecordException {
 		LOG.info("updateEmployee Controller");
 		Employee e = adminService.updateEmployee(employee);
 		return new ResponseEntity<Employee>(e, HttpStatus.OK);
@@ -174,12 +175,4 @@ public class AdminController {
 				return response;
 			}
 			
-			// http://localhost:8082//UpdateLeaveStatus
-			@PutMapping("/updateLeaveStatus")
-			public ResponseEntity<LeaveDetails> updateResignationStatus(@RequestBody LeaveDetails leaveDetails) {
-				LOG.info("updateLeave Controller");
-				LeaveDetails result = leaveService.updateLeaveStatus(leaveDetails);
-				ResponseEntity<LeaveDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
-				return response;
-			}
 }
