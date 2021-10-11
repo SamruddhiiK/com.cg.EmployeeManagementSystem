@@ -58,7 +58,7 @@ public class AdminController {
 	@Autowired
 	LeaveDetailsServiceImpl leaveService;
 
-	// http://localhost:8082/AdminLogin
+	// http://localhost:8082/AdminLogin  --done
 	@PostMapping(path = "/AdminLogin")
 	public ResponseEntity<Admin> adminLogin(@RequestBody Admin admin) throws IncorrectLoginCredentialsException {
 		LOG.info("adminLogin Controller");
@@ -112,7 +112,7 @@ public class AdminController {
 	}
 
 
-	// http://localhost:8082//addEmployee
+	// http://localhost:8082//addEmployee --done
 	@PostMapping("/addEmployee")
 	public ResponseEntity<String> addEmployee(@RequestBody Employee employee) {
 		LOG.info("addEmployee");

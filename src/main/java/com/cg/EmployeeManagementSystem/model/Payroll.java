@@ -23,13 +23,7 @@ public class Payroll {
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payrollId;
 
-	@ManyToOne(cascade =
-        {
-                CascadeType.DETACH,
-                CascadeType.MERGE,
-                CascadeType.REFRESH,
-                CascadeType.PERSIST
-        })
+	@ManyToOne
 	@JoinColumn(name="eid")
 	Employee employee;
 	

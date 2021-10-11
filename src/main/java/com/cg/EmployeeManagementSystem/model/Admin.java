@@ -13,7 +13,7 @@ public class Admin {
 
 	@Id
 	@Column(name = "admin_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int adminId;
 
 	@Column(name = "admin_name", length = 50)
