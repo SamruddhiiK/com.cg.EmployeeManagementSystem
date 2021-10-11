@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cg.EmployeeManagementSystem.exception.NoSuchRecordException;
 import com.cg.EmployeeManagementSystem.model.Employee;
 import com.cg.EmployeeManagementSystem.model.Payroll;
+import com.cg.EmployeeManagementSystem.repository.EmployeeRepository;
 import com.cg.EmployeeManagementSystem.repository.PayrollRepository;
 
 @Service("payrollService")
@@ -17,10 +18,18 @@ public class PayrollServiceImpl implements PayrollService {
 
 	@Autowired
 	PayrollRepository payrollRepository;
+	
+	@Autowired
+	EmployeeRepository employeeRepository;
 
-	public Payroll updateSalary(Payroll payroll) {
+	public Payroll updateSalary(Payroll payroll) throws NoSuchRecordException{
+		int id = payroll.getEmployee().getEmployeeId();
+		if(employeeRepository.existsById(id)) {
 		Payroll result = payrollRepository.save(payroll);
 		return result;
+		}else {
+			throw new NoSuchRecordException("No such id is present");
+		}
 	}
 
 	public Optional<List<Payroll>> getSalaryDetailsByEmployeeId(int employeeId) throws NoSuchRecordException {

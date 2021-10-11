@@ -29,13 +29,7 @@ public class ResignationDetails {
 	private String status;
 
 	@OneToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@PrimaryKeyJoinColumn
-	@NotFound(action = NotFoundAction.IGNORE)
-	@JoinColumn(
-		    name = "ApplId",
-		    insertable = false,
-		    updatable = false)
+	@JoinColumn(name = "ApplId")
 	Employee employee;
 
 	public ResignationDetails() {
