@@ -33,13 +33,17 @@ public class PayrollServiceImpl implements PayrollService {
 	}
 
 	public Optional<List<Payroll>> getSalaryDetailsByEmployeeId(int employeeId) throws NoSuchRecordException {
+	    
 		Optional<List<Payroll>> result = payrollRepository.findAllPayrollsByEmployee(employeeId);
-		if (!result.isEmpty()) {
+		if (result.isEmpty()) {
 			//LOG.info("Salary Details");
-			return result;
+			throw new NoSuchRecordException("Payroll for given id does not exists!");
+			
 		}
-		//LOG.error("Id not found");
-		throw new NoSuchRecordException("Payroll for given id does not exists!");
-
+		else if(employeeRepository.existsById(employeeId)){//LOG.error("Id not found");
+			return result;
+		}else {
+			throw new NoSuchRecordException("Payroll for given id does not exists!");
+		}
 	}
 }
