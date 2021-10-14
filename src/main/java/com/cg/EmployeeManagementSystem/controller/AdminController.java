@@ -178,5 +178,14 @@ public class AdminController {
 			}
 			
 			
+			// http://localhost:8082//UpdateLeaveStatus
+			@PutMapping("/updateLeaveStatus")
+			public ResponseEntity<LeaveDetails> updateLeaveStatus(@RequestBody LeaveDetails leaveDetails) {
+				LOG.info("updateLeave Controller");
+				LeaveDetails result = leaveService.updateLeaveStatus(leaveDetails);
+				ResponseEntity<LeaveDetails> response = new ResponseEntity<>(result, HttpStatus.OK);
+				return response;
+			}
+			
 			
 }

@@ -26,3 +26,74 @@
 2021-10-14 09:43:13.203  INFO 17788 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2021-10-14 09:43:13.494  INFO 17788 --- [restartedMain] c.c.E.Application                        : Started Application in 22.081 seconds (JVM running for 22.844)
 2021-10-14 09:43:13.513  INFO 17788 --- [restartedMain] c.c.E.Application                        : End
+2021-10-14 10:24:45.201  INFO 17788 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-10-14 10:24:45.232  INFO 17788 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-10-14 10:24:45.236  INFO 17788 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-10-14 10:24:45.323  INFO 17788 --- [restartedMain] c.c.E.Application                        : Start
+2021-10-14 10:24:45.379  INFO 17788 --- [restartedMain] c.c.E.Application                        : Starting Application using Java 16.0.2 on DESKTOP-LU6DK1K with PID 17788 (C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem\target\classes started by Samruddhi in C:\Users\hp\Documents\workspace-spring-tool-suite-4-4.11.1.RELEASE\com.cg.EmployeeManagementSystem)
+2021-10-14 10:24:45.379  INFO 17788 --- [restartedMain] c.c.E.Application                        : No active profile set, falling back to default profiles: default
+2021-10-14 10:24:46.313  INFO 17788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-14 10:24:46.354  INFO 17788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 7 JPA repository interfaces.
+2021-10-14 10:24:46.598  INFO 17788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2021-10-14 10:24:46.599  INFO 17788 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-10-14 10:24:46.599  INFO 17788 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2021-10-14 10:24:46.635  INFO 17788 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-10-14 10:24:46.635  INFO 17788 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1253 ms
+2021-10-14 10:24:46.673  INFO 17788 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-14 10:24:46.679  INFO 17788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-10-14 10:24:46.730  INFO 17788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-10-14 10:24:46.731  INFO 17788 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-10-14 10:24:49.528  INFO 17788 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-14 10:24:49.529  INFO 17788 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-14 10:24:49.744  WARN 17788 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-14 10:24:49.785  INFO 17788 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-10-14 10:24:49.825  INFO 17788 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-10-14 10:24:49.889  INFO 17788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2021-10-14 10:24:49.890  INFO 17788 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-10-14 10:24:49.891  INFO 17788 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-10-14 10:24:49.896  INFO 17788 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-10-14 10:24:50.053  INFO 17788 --- [restartedMain] c.c.E.Application                        : Started Application in 4.708 seconds (JVM running for 2519.404)
+2021-10-14 10:24:50.055  INFO 17788 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-10-14 10:24:50.055  INFO 17788 --- [restartedMain] c.c.E.Application                        : End
+2021-10-14 10:31:50.190  INFO 17788 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-14 10:31:50.190  INFO 17788 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-10-14 10:31:50.191  INFO 17788 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-10-14 10:31:50.556  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.controller.AdminController         : adminLogin Controller
+2021-10-14 10:31:50.790  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.service.AdminServiceImpl           : Admin login is  successfull
+2021-10-14 10:32:08.161  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.controller.AdminController         : updateLeave Controller
+2021-10-14 10:32:53.598  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:32:53.599  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:33:03.134  INFO 17788 --- [http-nio-8082-exec-9] c.c.E.controller.AdminController         : getAllLeaveDetails Controller
+2021-10-14 10:33:59.097  INFO 17788 --- [http-nio-8082-exec-1] c.c.E.controller.AdminController         : getAllEmployee Controller
+2021-10-14 10:33:59.101  INFO 17788 --- [http-nio-8082-exec-1] c.c.E.service.AdminServiceImpl           : Get All Employees
+2021-10-14 10:34:09.959  INFO 17788 --- [http-nio-8082-exec-3] c.c.E.controller.AdminController         : getAllLeaveDetails Controller
+2021-10-14 10:34:35.022  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:34:35.023  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:35:11.937  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.controller.AdminController         : getAllEmployee Controller
+2021-10-14 10:35:11.939  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.service.AdminServiceImpl           : Get All Employees
+2021-10-14 10:35:28.548  INFO 17788 --- [http-nio-8082-exec-9] c.c.E.controller.EmployeeController      : Get Holiday List
+2021-10-14 10:35:28.549  INFO 17788 --- [http-nio-8082-exec-9] c.c.E.service.EmployeeServiceImpl        : get holiday list service
+2021-10-14 10:36:39.288  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.controller.AdminController         : addEmployee
+2021-10-14 10:36:39.531  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.service.AdminServiceImpl           : Employee is added successfully
+2021-10-14 10:37:10.347  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.controller.EmployeeController      : employeeLogin Controller
+2021-10-14 10:37:10.356  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.service.EmployeeServiceImpl        : Employee login is  successfull
+2021-10-14 10:37:38.912  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.controller.AdminController         : adminLogin Controller
+2021-10-14 10:37:38.917  INFO 17788 --- [http-nio-8082-exec-7] c.c.E.service.AdminServiceImpl           : Admin login is  successfull
+2021-10-14 10:37:47.348  INFO 17788 --- [http-nio-8082-exec-9] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:38:04.140  INFO 17788 --- [http-nio-8082-exec-9] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:38:04.333  INFO 17788 --- [http-nio-8082-exec-10] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:38:04.334  INFO 17788 --- [http-nio-8082-exec-10] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:38:04.340  INFO 17788 --- [http-nio-8082-exec-1] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:38:04.340  INFO 17788 --- [http-nio-8082-exec-1] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:38:04.352  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:38:04.353  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:38:11.784  INFO 17788 --- [http-nio-8082-exec-4] c.c.E.controller.AdminController         : getAllResignations Controller
+2021-10-14 10:38:11.784  INFO 17788 --- [http-nio-8082-exec-4] c.c.E.service.ResignationDetailsService  : Get All Resignation Details
+2021-10-14 10:38:31.663  INFO 17788 --- [http-nio-8082-exec-6] c.c.E.controller.AdminController         : getAllEmployee Controller
+2021-10-14 10:38:31.666  INFO 17788 --- [http-nio-8082-exec-6] c.c.E.service.AdminServiceImpl           : Get All Employees
+2021-10-14 10:39:23.552  INFO 17788 --- [http-nio-8082-exec-8] c.c.E.controller.AdminController         : getAdminById
+2021-10-14 10:39:23.552  INFO 17788 --- [http-nio-8082-exec-8] c.c.E.service.AdminServiceImpl           : getEmployeeById 16
+2021-10-14 10:42:57.681  INFO 17788 --- [http-nio-8082-exec-10] c.c.E.controller.AdminController         : getAllLeaveDetails Controller
+2021-10-14 10:43:14.153  INFO 17788 --- [http-nio-8082-exec-2] c.c.E.controller.AdminController         : updateLeave Controller
+2021-10-14 10:43:18.801  INFO 17788 --- [http-nio-8082-exec-3] c.c.E.controller.AdminController         : getAllLeaveDetails Controller
+2021-10-14 10:44:09.891  INFO 17788 --- [http-nio-8082-exec-5] c.c.E.controller.AdminController         : getAllLeaveDetails Controller
